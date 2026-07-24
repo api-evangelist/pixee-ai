@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Pixee REST Findings Scans API
+  version: v1
+  description: 'Pixee provides a REST API for programmatic access to vulnerability triage and remediation workflows. The API enables querying fix status, managing repository configurations, listing scans and findings, and registering webhook endpoints for CI/CD integration. Authentication uses organization-scoped bearer API tokens. The API is a HAL (Hypertext Application Language) API: every response includes `_links` that name related resources; clients start at `/api/v1` and follow `_links`.
+
+    This description is a faithful reconstruction of the endpoints documented at https://docs.pixee.ai/api/overview and https://docs.pixee.ai/api/webhooks. It is not the provider''s own machine-readable specification (none was published at a discoverable URL as of the generated date).'
+  contact:
+    name: Pixee
+    url: https://docs.pixee.ai/api/overview
+  x-generated: '2026-07-20'
+  x-method: generated
+  x-source: https://docs.pixee.ai/api/overview
+servers:
+- url: https://app.pixee.ai/api/v1
+  description: Pixee production API (path-based versioning; breaking changes ship under a new version prefix)
+security:
+- bearerAuth: []
+tags:
+- name: Scans
+paths:
+  /repositories/{id}/scans:
+    get:
+      tags:
+      - Scans
+      operationId: listRepositoryScans
+      summary: List scan history for a repository
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of scans
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+      - Scans
+      operationId: triggerScan
+      summary: Trigger a new scan
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Scan accepted
+        '403':
+          $ref: '#/components/responses/Forbidden'
+components:
+  responses:
+    Forbidden:
+      description: Token does not have permission for this resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      description: Consistent error envelope used by all error responses.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: not_found
+            message:
+              type: string
+              example: Repository with ID 'abc123' not found.
+            request_id:
+              type: string
+              example: req_7f8a9b2c
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Organization-scoped API token generated from Settings > API Tokens in the Pixee dashboard. Tokens may be organization-wide or repository-specific. Sent as `Authorization: Bearer <token>`.'
