@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.pixee.ai/api/overview
+docs: https://docs.pixee.ai/api/overview
+api: Pixee REST API
+summary: >-
+  Pixee uses bearer tokens for API authentication. Tokens are organization-scoped and
+  generated from Settings > API Tokens in the Pixee dashboard. Tokens can be
+  organization-wide or repository-specific. HTTPS/TLS is required for all requests.
+schemes:
+- id: bearerAuth
+  type: http
+  scheme: bearer
+  location: header
+  header: Authorization
+  format: "Authorization: Bearer <token>"
+  token_scope:
+  - organization-wide
+  - repository-specific
+  provisioning: Settings > API Tokens in the Pixee dashboard; token is displayed only once.
+best_practices:
+- Rotate tokens every 90 days.
+- Use repository-scoped tokens for CI/CD pipelines that operate on a single repository.
+- Store tokens in a secrets manager (Vault, AWS Secrets Manager, GitHub Actions secrets).
+- Never commit tokens to source control.
+enterprise:
+  sso: >-
+    Enterprise deployments support SSO for dashboard/user access with roles Admin,
+    Security Lead, and Member (see https://docs.pixee.ai/configuration/users).

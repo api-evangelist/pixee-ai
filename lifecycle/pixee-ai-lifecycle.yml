@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.pixee.ai/api/overview
+api: Pixee REST API
+versioning:
+  style: path-based
+  current: v1
+  base_url: https://app.pixee.ai/api/v1
+  policy: Breaking changes ship under a new version prefix.
+rate_limits:
+  standard: { requests_per_minute: 60, burst: 10 }
+  enterprise: { requests_per_minute: 300, burst: 50 }
+  signaling: 429 Too Many Requests + Retry-After header
+deprecation:
+  policy_documented: false
+  headers: none documented (no RFC 8594 Sunset/Deprecation headers found)
+status_page:
+  found: false
+  note: No dedicated hosted status page confirmed (pixee.statuspage.io resolves to the Atlassian Statuspage marketing page, not a claimed Pixee page).
+sla:
+  note: Enterprise tier documented (higher rate limits, dedicated/air-gapped deployment); no public numeric SLA published.
+client_versioning:
+  cli: pixee-cli follows semantic versioning; current v0.16.1 (2026-07-16). See changelog/pixee-ai-changelog.yml.

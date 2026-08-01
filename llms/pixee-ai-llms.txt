@@ -1,0 +1,67 @@
+# Pixee
+
+> Pixee is your automated product security engineer
+
+This file contains links to documentation sections following the llmstxt.org standard.
+
+## Table of Contents
+
+- [API Overview](https://docs.pixee.ai/docs/api/api-overview): Pixee REST API reference: authentication, endpoints, rate limits, and SARIF input format.
+- [Pixee CLI](https://docs.pixee.ai/api/cli): Install the Pixee CLI to authenticate against a Pixee deployment and drive the REST API from your terminal, scripts, or coding agents.
+- [SARIF Reference](https://docs.pixee.ai/api/sarif): How Pixee consumes SARIF from scanners. Field mapping, required fields, validation, and integration examples.
+- [Webhooks](https://docs.pixee.ai/api/webhooks): Configure Pixee webhooks for real-time notifications on fix generation, PR status, triage decisions, and remediation events.
+- [AI Settings](https://docs.pixee.ai/configuration/ai-settings): Configure triage sensitivity, fix quality thresholds, and LLM provider settings for Pixee triage and remediation.
+- [Configuration Overview](https://docs.pixee.ai/docs/configuration/config-overview): Configure Pixee behavior via PIXEE.yaml, organization settings, and AI settings. Covers repository management, scheduling, notifications, and repor...
+- [Operations Configuration](https://docs.pixee.ai/docs/configuration/operations-config): Configure Pixee scheduling, notifications (Slack, email, webhooks), and reporting. Control analysis timing, alert routing, and metric exports.
+- [PIXEE.yaml Reference](https://docs.pixee.ai/configuration/pixee-yaml): Complete reference for PIXEE.yaml, the per-repository configuration file for controlling Pixee triage, fix, and ignore behavior.
+- [Repository Management](https://docs.pixee.ai/configuration/repositories): Add, remove, pause, and organize repositories monitored by Pixee across GitHub, GitLab, Azure DevOps, and Bitbucket.
+- [Users & Access](https://docs.pixee.ai/configuration/users): Manage user access, roles, and SSO integration in Pixee. Covers Admin, Security Lead, and Member roles.
+- [Bring Your Own Model](https://docs.pixee.ai/enterprise/byom): Configure Pixee with your preferred LLM provider. Supports OpenAI, Anthropic, Azure AI Foundry, AWS Bedrock, Google Vertex AI, and more with hierar...
+- [Compliance](https://docs.pixee.ai/enterprise/compliance): Pixee compliance mapping for SOC 2, HIPAA, FedRAMP, PCI-DSS, NIST 800-53, and ISO 27001. Covers audit evidence, data residency, and AI governance.
+- [Air-Gapped Deployment](https://docs.pixee.ai/docs/enterprise/deployment/air-gap): Deploy Pixee in air-gapped environments with private LLM endpoints. Covers capabilities, requirements, and known limitations for disconnected deplo...
+- [Deployment Options](https://docs.pixee.ai/docs/enterprise/deployment/deployment-overview): Compare Pixee deployment models: Dedicated SaaS, embedded cluster, Helm/BYO Kubernetes, and air-gapped. Includes data flow tables and infrastructur...
+- [Embedded Cluster](https://docs.pixee.ai/docs/enterprise/deployment/embedded-cluster): Deploy Pixee Enterprise as a turnkey appliance on a single Linux VM. K3s-based with KOTS admin console. No Kubernetes expertise required.
+- [Helm / BYO Kubernetes](https://docs.pixee.ai/docs/enterprise/deployment/helm): Deploy Pixee Enterprise via Helm chart into your existing Kubernetes cluster. Supports EKS, GKE, AKS, and self-managed K8s with BYO component options.
+- [Enterprise Overview](https://docs.pixee.ai/docs/enterprise/enterprise-overview): Pixee Enterprise deployment models, compliance controls, identity management, and operational metrics.
+- [Observability](https://docs.pixee.ai/enterprise/observability): Monitor Pixee Enterprise with bundled VictoriaMetrics, Grafana dashboards, distributed tracing, and log aggregation. BYO observability supported.
+- [Phased Rollout Guide](https://docs.pixee.ai/enterprise/phased-rollout): Roll out Pixee from a single repository to your entire organization with decision gates, success criteria, and rollback plans at every phase.
+- [Security Architecture](https://docs.pixee.ai/enterprise/security-architecture): Pixee security architecture: data flow controls, access management, AI governance, SSO integration, credential handling, and network security.
+- [Enterprise Troubleshooting](https://docs.pixee.ai/enterprise/troubleshooting): Troubleshoot common Pixee enterprise deployment issues: installation failures, scanner connectivity, LLM configuration, SSO, and performance.
+- [FAQ](https://docs.pixee.ai/docs/faq/faq): Common questions about Pixee: how it works, safety, enterprise deployment, and troubleshooting.
+- [Your First Fix](https://docs.pixee.ai/getting-started/first-fix): What a Pixee PR looks like, what the quality scores mean, and what to do with it.
+- [Welcome to Pixee](https://docs.pixee.ai/docs): Install Pixee and connect your scanners for automated vulnerability triage and remediation via pull requests.
+- [Connect Source Control](https://docs.pixee.ai/getting-started/source-control): Connect your source control platform to Pixee. Quick-start summary for GitHub, GitLab, Azure DevOps, and Bitbucket with links to full setup guides.
+- [CI/CD Integration](https://docs.pixee.ai/integrations/ci-cd): How Pixee fits into a CI/CD pipeline. Covers SCM-driven ingestion, SARIF upload patterns, and platform-specific examples.
+- [Integrations Overview & Coverage Matrix](https://docs.pixee.ai/docs/integrations/integrations-overview): Coverage matrix for Pixee integrations. Natively integrated scanners, 4 SCM platforms, and universal SARIF support.
+- [HCL AppScan Integration](https://docs.pixee.ai/integrations/scanners/appscan): Pixee integration with HCL AppScan for automated triage and remediation, with custom trace format handling.
+- [Arnica Integration](https://docs.pixee.ai/integrations/scanners/arnica): Pixee integration with Arnica for automated triage and remediation of SAST findings.
+- [Checkmarx Integration](https://docs.pixee.ai/integrations/scanners/checkmarx): Pixee integration with Checkmarx for automated triage and remediation, including adaptive handling for metadata-sparse SARIF.
+- [CodeQL Integration](https://docs.pixee.ai/integrations/scanners/codeql): Pixee integration with CodeQL for automated triage and remediation of GitHub Advanced Security findings.
+- [Contrast Security Integration](https://docs.pixee.ai/integrations/scanners/contrast): Pixee integration with Contrast Security IAST for automated triage and remediation of runtime-detected vulnerabilities.
+- [Datadog SAST Integration](https://docs.pixee.ai/integrations/scanners/datadog-sast): Pixee integration with Datadog Static Analysis for automated triage and remediation of SAST findings.
+- [DefectDojo Integration](https://docs.pixee.ai/integrations/scanners/defectdojo): Pixee integration with DefectDojo for automated triage and remediation of aggregated findings from multiple scanners.
+- [Fortify Integration](https://docs.pixee.ai/integrations/scanners/fortify): Pixee integration with Fortify SAST for automated triage and remediation. Reduces backlog burden in regulated and government environments.
+- [GitLab SAST Integration](https://docs.pixee.ai/integrations/scanners/gitlab-sast): Pixee integration with GitLab SAST for automated triage and remediation of findings from multiple analyzers.
+- [GitLab SCA Integration](https://docs.pixee.ai/integrations/scanners/gitlab-sca): Pixee integration with GitLab Dependency Scanning for automated triage and remediation of open-source dependency vulnerabilities.
+- [Polaris Integration](https://docs.pixee.ai/integrations/scanners/polaris): Pixee integration with Polaris (Synopsys / Black Duck Coverity) for automated triage and remediation of dataflow and code-quality findings.
+- [Semgrep Integration](https://docs.pixee.ai/integrations/scanners/semgrep): Pixee integration with Semgrep for automated triage and remediation of OSS and Pro rule findings.
+- [Snyk Code Integration](https://docs.pixee.ai/integrations/scanners/snyk-code): Pixee integration with Snyk Code for automated triage and remediation of SAST findings.
+- [SonarQube Integration](https://docs.pixee.ai/integrations/scanners/sonarqube): Pixee integration with SonarQube and SonarCloud for automated triage and remediation, including security hotspot classification.
+- [Trivy Integration](https://docs.pixee.ai/integrations/scanners/trivy): Pixee integration with Aqua Trivy for automated triage and remediation across container, dependency, IaC, and secret findings.
+- [Veracode Integration](https://docs.pixee.ai/integrations/scanners/veracode): Pixee integration with Veracode for automated triage and remediation of SAST findings.
+- [Azure DevOps Integration](https://docs.pixee.ai/integrations/scms/azure-devops): Pixee integration with Azure DevOps via personal access token and webhook configuration. Optional work-item linking for branch-policy compliance.
+- [Bitbucket Integration](https://docs.pixee.ai/integrations/scms/bitbucket): Pixee integration with Bitbucket via API token. Native pull request delivery and SARIF upload from Bitbucket Pipelines or any external CI system.
+- [GitHub Integration](https://docs.pixee.ai/integrations/scms/github): Pixee integration with GitHub via native GitHub App. Automated triage and remediation delivered as pull requests.
+- [GitLab Integration](https://docs.pixee.ai/integrations/scms/gitlab): Pixee integration with GitLab via service-account personal access token. Native merge request delivery with optional project-membership scoping.
+- [Language Support](https://docs.pixee.ai/docs/languages/languages-overview): Programming languages and IaC formats supported by Pixee for security triage and remediation.
+- [Codemodder Framework](https://docs.pixee.ai/open-source/codemodder): Codemodder open source framework for building security-focused code transformations. Supports Java and Python.
+- [Custom Codemods](https://docs.pixee.ai/open-source/custom-codemods): Build custom security codemods using the Codemodder framework. Step-by-step tutorial for Java and Python.
+- [Platform Architecture](https://docs.pixee.ai/platform/architecture): Three-component architecture with progressive triage, hybrid remediation, and native PR delivery. End-to-end processing flow from scanner finding t...
+- [Context, Memory & Preferences](https://docs.pixee.ai/platform/context-memory): How Pixee reads your codebase, adapts to team conventions, and improves from feedback signals to deliver context-aware fixes.
+- [Remediation](https://docs.pixee.ai/platform/remediation): How Pixee generates security fixes using deterministic codemods and AI-powered fixes with independent quality evaluation.
+- [SCA](https://docs.pixee.ai/platform/sca): How Pixee verifies CVE exploitability in your codebase and delivers atomic dependency upgrade PRs with code-level fixes.
+- [Scanner Integration](https://docs.pixee.ai/platform/scanner-integration): How Pixee integrates with natively supported scanners and any SARIF-producing tool. Two-tier integration architecture and metadata extraction.
+- [Security & Trust](https://docs.pixee.ai/platform/security): How Pixee validates AI-generated fixes, protects your code, and preserves human authority. Fix validation layers, data handling, and deployment mod...
+- [Triage](https://docs.pixee.ai/platform/triage): How Pixee's three-tier triage engine classifies every vulnerability finding with structured, auditable evidence.
+- [What is Agentic Security Engineering?](https://docs.pixee.ai/platform/what-is-agentic-security-engineering): Agentic security engineering uses purpose-built AI agents to triage and remediate application security vulnerabilities. Definition, architecture, a...
+- [What Pixee Fixes](https://docs.pixee.ai/platform/what-pixee-fixes): Canonical reference for all vulnerability types, finding categories, and fix modes Pixee handles across SAST, SCA, and IaC findings.

@@ -1,0 +1,83 @@
+asyncapi: 3.0.0
+info:
+  title: Pixee Webhooks
+  version: '1.0'
+  description: >-
+    Pixee webhooks deliver real-time HTTP POST notifications when remediation events occur.
+    This AsyncAPI document is a faithful reconstruction of the event types and payload
+    schemas documented at https://docs.pixee.ai/api/webhooks (no provider-published
+    AsyncAPI exists as of the generated date).
+  x-generated: '2026-07-20'
+  x-method: generated
+  x-source: https://docs.pixee.ai/api/webhooks
+defaultContentType: application/json
+servers:
+  subscriber:
+    host: your-app.example.com
+    protocol: https
+    description: Customer-hosted endpoint registered via POST /api/v1/webhooks (signed with a shared secret).
+channels:
+  pixeeEvents:
+    address: /webhooks/pixee
+    description: Endpoint that receives Pixee webhook POSTs.
+    messages:
+      fixGenerated: { $ref: '#/components/messages/fixGenerated' }
+      prOpened: { $ref: '#/components/messages/prOpened' }
+      prMerged: { $ref: '#/components/messages/prMerged' }
+      prClosed: { $ref: '#/components/messages/prClosed' }
+      triageCompleted: { $ref: '#/components/messages/triageCompleted' }
+      scanCompleted: { $ref: '#/components/messages/scanCompleted' }
+operations:
+  receiveEvents:
+    action: receive
+    channel: { $ref: '#/channels/pixeeEvents' }
+    messages:
+    - { $ref: '#/channels/pixeeEvents/messages/fixGenerated' }
+    - { $ref: '#/channels/pixeeEvents/messages/prOpened' }
+    - { $ref: '#/channels/pixeeEvents/messages/prMerged' }
+    - { $ref: '#/channels/pixeeEvents/messages/prClosed' }
+    - { $ref: '#/channels/pixeeEvents/messages/triageCompleted' }
+    - { $ref: '#/channels/pixeeEvents/messages/scanCompleted' }
+components:
+  schemas:
+    envelope:
+      type: object
+      required: [id, type, created_at, organization, repository, data]
+      properties:
+        id: { type: string, description: Unique event identifier (evt_...) }
+        type: { type: string }
+        created_at: { type: string, format: date-time }
+        organization: { type: string }
+        repository: { type: string }
+        data: { type: object }
+  messages:
+    fixGenerated:
+      name: fix.generated
+      summary: A fix passes evaluation and is ready for delivery.
+      payload:
+        allOf: [{ $ref: '#/components/schemas/envelope' }]
+    prOpened:
+      name: pr.opened
+      summary: A pull request or merge request is created.
+      payload:
+        allOf: [{ $ref: '#/components/schemas/envelope' }]
+    prMerged:
+      name: pr.merged
+      summary: A fix PR is merged by a developer.
+      payload:
+        allOf: [{ $ref: '#/components/schemas/envelope' }]
+    prClosed:
+      name: pr.closed
+      summary: A fix PR is closed without merging.
+      payload:
+        allOf: [{ $ref: '#/components/schemas/envelope' }]
+    triageCompleted:
+      name: triage.completed
+      summary: A finding finishes triage classification (TRUE_POSITIVE / FALSE_POSITIVE / WONT_FIX).
+      payload:
+        allOf: [{ $ref: '#/components/schemas/envelope' }]
+    scanCompleted:
+      name: scan.completed
+      summary: A repository scan finishes processing.
+      payload:
+        allOf: [{ $ref: '#/components/schemas/envelope' }]

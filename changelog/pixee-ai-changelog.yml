@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/pixee/pixee-cli/releases
+scope: Pixee CLI (pixee-cli) — the platform's REST API client
+scheme: semver
+current_version: v0.16.1
+entries:
+- version: v0.16.1
+  date: '2026-07-16'
+- version: v0.16.0
+  date: '2026-05-21'
+- version: v0.15.0
+  date: '2026-05-20'
+- version: v0.14.0
+  date: '2026-05-19'
+- version: v0.13.0
+  date: '2026-05-15'
+- version: v0.12.0
+  date: '2026-05-12'
+notes: >-
+  Release notes and cosign-signed binaries (linux-x64/arm64, darwin-arm64, windows-x64)
+  plus the bundled pixee-cli-skills.tar.gz agent skills are published on each GitHub
+  Release. No separate dated changelog was found for the hosted REST API itself.

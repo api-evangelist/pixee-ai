@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  https://docs.pixee.ai/api/overview + https://docs.pixee.ai/api/webhooks +
+  pixee CLI bundled skills (pixee-api / pixee-shared)
+api: Pixee REST API
+base_url: https://app.pixee.ai/api/v1
+transport:
+  protocol: HTTPS only (TLS required)
+  format: JSON request and response bodies
+authentication:
+  style: bearer token (Authorization header)
+  detail: Organization-scoped API tokens; see authentication/pixee-ai-authentication.yml
+hypermedia:
+  style: HAL (Hypertext Application Language)
+  detail: >-
+    Every response contains `_links` naming related resources. Clients start at
+    `/api/v1` and follow `_links` to reach every other endpoint rather than hardcoding
+    paths. The CLI `pixee api` handles HAL link traversal.
+pagination:
+  style: HAL link-based
+  detail: >-
+    Collections are paginated; the CLI exposes `--paginate` to follow `_links` across
+    pages. Follow the pagination links in `_links` rather than constructing offsets.
+versioning:
+  style: path-based
+  current: v1
+  policy: Breaking changes ship under a new version prefix (e.g. /v2/).
+  cross_reference: lifecycle/pixee-ai-lifecycle.yml
+error_envelope:
+  shape: '{ "error": { "code": string, "message": string, "request_id": string } }'
+  format: custom (not RFC 9457 problem+json)
+  cross_reference: errors/pixee-ai-problem-types.yml
+request_tracing:
+  field: request_id
+  detail: Error responses include a request_id; include it in support tickets.
+rate_limiting:
+  signaling: 429 Too Many Requests with a Retry-After header (seconds until next window)
+  tiers:
+    standard: { requests_per_minute: 60, burst: 10 }
+    enterprise: { requests_per_minute: 300, burst: 50 }
+  cross_reference: lifecycle/pixee-ai-lifecycle.yml
+concurrency:
+  optimistic: >-
+    Organization preferences use optimistic concurrency (handled by the CLI's
+    `organization preferences` commands).
+idempotency:
+  documented: false
+  note: >-
+    No idempotency-key mechanism is documented as of the generated date. Not asserted.

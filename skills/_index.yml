@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  https://github.com/pixee/pixee-cli — bundled pixee-cli-skills.tar.gz asset of release
+  v0.16.1 (2026-07-16), saved verbatim.
+format: skills.sh (openclaw metadata)
+description: >-
+  First-party Pixee Agent Skills that teach coding agents (Claude Code, OpenAI Codex, and
+  others) how to drive the pixee CLI against a Pixee deployment safely. Grounded in real
+  CLI subcommands and the HAL-based Pixee REST API. Distributed on each pixee-cli GitHub
+  Release; captured here verbatim (LICENSE + NOTICE included).
+skills:
+- name: pixee-shared
+  path: pixee-shared/SKILL.md
+  description: Global flags, output format, exit codes, error handling, TLS trust troubleshooting for every subcommand.
+- name: pixee-auth
+  path: pixee-auth/SKILL.md
+  description: Store and validate Pixee API tokens and inspect authentication state.
+- name: pixee-api
+  path: pixee-api/SKILL.md
+  description: Send authenticated requests to any Pixee REST API endpoint (HAL discovery via _links from /api/v1).
+- name: pixee-repo
+  path: pixee-repo/SKILL.md
+  description: List, view, and delete repositories with shared name-or-UUID resolution.
+- name: pixee-scan
+  path: pixee-scan/SKILL.md
+  description: List, view, analyze, create, and delete scans with repo/branch/tool/state filters.
+- name: pixee-analysis
+  path: pixee-analysis/SKILL.md
+  description: List, view, and delete analyses with optional polling to a terminal state.
+- name: pixee-finding
+  path: pixee-finding/SKILL.md
+  description: List, filter, and view findings with aggregate triage/fix/SCA counts.
+- name: pixee-integration
+  path: pixee-integration/SKILL.md
+  description: List integrations to discover id, type, and capabilities of each scanner integration.
+- name: pixee-workflow
+  path: pixee-workflow/SKILL.md
+  description: List, create, update, run, and delete repository workflows with partial-update semantics.
+- name: pixee-preferences
+  path: pixee-preferences/SKILL.md
+  description: Read and write organization preferences with optimistic concurrency.

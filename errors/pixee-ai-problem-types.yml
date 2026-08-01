@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.pixee.ai/api/overview (Error handling section)
+api: Pixee REST API
+format: custom
+envelope: '{ "error": { "code": string, "message": string, "request_id": string } }'
+notes: >-
+  Pixee does NOT use RFC 9457 application/problem+json. Errors are a custom JSON envelope
+  with a machine-readable `code`, human `message`, and a `request_id` for support tracing.
+fields:
+- name: error.code
+  description: Machine-readable error code (e.g. not_found).
+- name: error.message
+  description: Human-readable description.
+- name: error.request_id
+  description: Correlation id to include in support tickets.
+status_codes:
+- status: 400
+  meaning: Bad request. Check request body and parameters.
+- status: 401
+  meaning: Invalid or missing API token.
+- status: 403
+  meaning: Token does not have permission for this resource.
+- status: 404
+  meaning: Resource not found.
+  example_code: not_found
+- status: 429
+  meaning: Rate limit exceeded. Retry after the interval in the Retry-After header.
+- status: 500
+  meaning: Internal server error. Retry with exponential backoff.

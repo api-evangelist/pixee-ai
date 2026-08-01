@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay for the Pixee REST API
+  version: 1.0.0
+extends: ../openapi/pixee-ai-openapi.yaml
+x-generated: '2026-07-20'
+x-method: generated
+x-source: API Evangelist enrichment pipeline
+actions:
+- target: $.info
+  description: Annotate provenance and cross-cutting conventions.
+  update:
+    x-hypermedia: HAL (Hypertext Application Language) — responses carry _links; traverse from /api/v1.
+    x-rate-limit:
+      standard: { requests_per_minute: 60, burst: 10 }
+      enterprise: { requests_per_minute: 300, burst: 50 }
+    x-error-format: "custom envelope { error: { code, message, request_id } } (not RFC 9457)"
+    x-authentication: organization-scoped bearer token (Authorization header)
+- target: $.paths['/webhooks'].post
+  description: Document the full documented webhook event catalog.
+  update:
+    x-webhook-events:
+    - fix.generated
+    - pr.opened
+    - pr.merged
+    - pr.closed
+    - triage.completed
+    - scan.completed
+    x-webhook-signing: shared secret provided at registration; see asyncapi/pixee-ai-webhooks-asyncapi.yml
+- target: $.paths['/repositories'].get
+  description: Note HAL pagination support.
+  update:
+    x-pagination: HAL link-based; follow _links (CLI --paginate).

@@ -1,0 +1,71 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.pixee.ai/api/cli
+name: Pixee CLI
+binary: pixee
+description: >-
+  Command-line client for the Pixee platform. Authenticates against a Pixee deployment,
+  exposes dedicated subcommands for common operations, and provides a generic `pixee api`
+  passthrough for any REST endpoint (handles authentication, pagination, and HAL link
+  traversal). It talks to a Pixee deployment; it does not run analysis or generate fixes
+  locally. Complements the SCM integrations (GitHub App, GitLab, Azure DevOps, Bitbucket).
+repository: https://github.com/pixee/pixee-cli
+install:
+- method: homebrew
+  commands:
+  - brew tap pixee/pixee
+  - brew install pixee
+  tap: https://github.com/pixee/homebrew-tap
+- method: direct-download
+  detail: >-
+    Pre-compiled binaries for linux-x64, linux-arm64, darwin-arm64, and windows-x64 are
+    published as cosign-signed assets on every GitHub Release.
+  url: https://github.com/pixee/pixee-cli/releases
+- method: pypi
+  commands:
+  - pip install pixee
+authentication:
+  token: Pixee API token generated from the admin console's API Tokens page.
+  server: URL of the Pixee deployment.
+  methods:
+  - "pixee auth login --server https://pixee.example.com --token pixee_xxx"
+  - "echo -n \"$PIXEE_TOKEN\" | pixee auth login --server ... --token -   (stdin, keeps token out of history)"
+  credential_resolution:
+    token: PIXEE_TOKEN env var -> stored config
+    server: --server flag -> PIXEE_SERVER env var -> stored config
+  ci_cd: Setting PIXEE_TOKEN and PIXEE_SERVER is the standard CI/CD path (no interactive login).
+  storage: Token written with 0600 permissions on Unix.
+commands:
+- group: auth
+  operations: [login, status]
+- group: repo
+  operations: [list, get, delete]
+  notes: Filter list with --name <pattern>; shared name-or-UUID resolution.
+- group: scan
+  operations: [list, get, analyze, create, delete]
+  notes: Filter with --branch, --tool, --analysis-state, --has-analysis.
+- group: analysis
+  operations: [list, get, delete]
+  notes: Optional polling until the analysis reaches a terminal state.
+- group: finding
+  operations: [list, get]
+  notes: Aggregate counts across triage, fix, and SCA outcomes.
+- group: integration
+  operations: [list]
+  notes: Discover id, type, and capabilities of each scanner integration.
+- group: workflow
+  operations: [list, create, update, run, delete]
+  notes: Schedule / new-scan / pull-request-scan workflows; partial-update semantics.
+- group: organization preferences
+  operations: [read, write]
+  notes: Read/write org preferences from files or stdin; optimistic concurrency handled by the CLI.
+- group: api
+  operations: [passthrough]
+  notes: >-
+    Escape-hatch subcommand modeled on `gh api`. Sends authenticated requests to any REST
+    endpoint; handles pagination (--paginate) and HAL _links traversal starting at /api/v1.
+agent_skills:
+  bundled: true
+  format: skills.sh (openclaw metadata)
+  asset: pixee-cli-skills.tar.gz (published on each GitHub Release)
+  note: Teaches Claude Code, OpenAI Codex, and other agents how to drive the CLI safely. Captured under skills/ in this repo.

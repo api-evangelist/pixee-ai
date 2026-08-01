@@ -1,0 +1,22 @@
+{
+  "provider": "pixee-ai",
+  "sources": [
+    "pixee-ai-findings-api-openapi.yml",
+    "pixee-ai-fixes-api-openapi.yml",
+    "pixee-ai-repositories-api-openapi.yml",
+    "pixee-ai-scans-api-openapi.yml",
+    "pixee-ai-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "pixee-ai-findings-api-openapi.yml",
+    "pixee-ai-fixes-api-openapi.yml",
+    "pixee-ai-repositories-api-openapi.yml",
+    "pixee-ai-scans-api-openapi.yml",
+    "pixee-ai-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

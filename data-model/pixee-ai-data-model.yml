@@ -1,0 +1,68 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  https://docs.pixee.ai/api/overview + https://docs.pixee.ai/api/webhooks + pixee CLI
+  resource surface
+api: Pixee REST API
+notes: >-
+  Entity graph derived from documented REST endpoints and the CLI resource surface.
+  The API is HAL-based; relationships surface as `_links` on each resource.
+id_prefixes:
+- prefix: fix_
+  entity: Fix
+  example: fix_9a8b7c
+- prefix: evt_
+  entity: WebhookEvent
+  example: evt_a1b2c3d4e5
+- prefix: req_
+  entity: (request correlation id)
+  example: req_7f8a9b2c
+- prefix: f_
+  entity: Finding
+  example: f_abc123
+entities:
+- name: Repository
+  description: A source-control repository connected to the organization (GitHub, GitLab, Azure DevOps, Bitbucket).
+  relationships:
+  - { type: has_many, target: Scan, via: repository }
+  - { type: has_many, target: Finding, via: repository }
+  - { type: has_many, target: Fix, via: repository }
+  - { type: has_many, target: Workflow, via: repository }
+- name: Scan
+  description: A processing run over a repository that ingests scanner (SARIF) output.
+  relationships:
+  - { type: belongs_to, target: Repository, via: repository }
+  - { type: has_many, target: Analysis, via: scan }
+  - { type: has_many, target: Finding, via: scan }
+- name: Analysis
+  description: An analysis produced by a scan; polled to a terminal state.
+  relationships:
+  - { type: belongs_to, target: Scan, via: scan }
+- name: Finding
+  description: A vulnerability finding with a triage classification (TRUE_POSITIVE, FALSE_POSITIVE, WONT_FIX).
+  relationships:
+  - { type: belongs_to, target: Repository, via: repository }
+  - { type: belongs_to, target: Scan, via: scan }
+  - { type: has_one, target: Fix, via: finding }
+- name: Fix
+  description: A remediation delivered as a pull request; includes diff, rationale, and quality scores.
+  relationships:
+  - { type: belongs_to, target: Repository, via: repository }
+  - { type: belongs_to, target: Finding, via: finding_ids }
+- name: Integration
+  description: A registered scanner integration (id, type, capabilities).
+  relationships:
+  - { type: belongs_to, target: Organization, via: organization }
+- name: Workflow
+  description: A schedule / new-scan / pull-request-scan workflow attached to a repository.
+  relationships:
+  - { type: belongs_to, target: Repository, via: repository }
+- name: Webhook
+  description: A registered webhook endpoint subscribed to remediation event types.
+  relationships:
+  - { type: belongs_to, target: Organization, via: organization }
+- name: Organization
+  description: The tenant; owns repositories, integrations, preferences, and tokens.
+  relationships:
+  - { type: has_many, target: Repository, via: organization }
+  - { type: has_many, target: Integration, via: organization }

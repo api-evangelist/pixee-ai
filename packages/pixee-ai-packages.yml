@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  npm/PyPI/Maven Central/GitHub registry searches + https://docs.pixee.ai/api/cli
+  and https://docs.pixee.ai/open-source/codemodder
+packages:
+- name: pixee
+  registry: PyPI
+  url: https://pypi.org/project/pixee/
+  version: 0.8.15
+  language: Python
+  summary: Pixee CLI (Python distribution)
+  official: true
+- name: pixee-cli
+  registry: GitHub Releases
+  url: https://github.com/pixee/pixee-cli
+  version: v0.16.1
+  language: Go
+  summary: >-
+    Pixee CLI — command-line client for the Pixee platform. Pre-compiled binaries for
+    linux-x64, linux-arm64, darwin-arm64, windows-x64, cosign-signed (SHA256SUMS +
+    cosign bundle). Also distributed via Homebrew (brew tap pixee/pixee; brew install pixee).
+  official: true
+- name: codemodder
+  registry: PyPI
+  url: https://pypi.org/project/codemodder/
+  version: 6.5.5
+  language: Python
+  summary: Python implementation of the Codemodder framework for building security codemods.
+  homepage: https://codemodder.io
+  repository: https://github.com/pixee/codemodder-python
+  official: true
+- name: io.codemodder:core-codemods
+  registry: Maven Central
+  url: https://central.sonatype.com/artifact/io.codemodder/core-codemods
+  language: Java
+  summary: >-
+    Codemodder Java framework (io.codemodder group — core-codemods and plugins for maven,
+    semgrep, sonar, pmd, etc.; 16 published artifacts).
+  repository: https://github.com/pixee/codemodder-java
+  official: true
+notes: >-
+  Pixee's REST API client is the pixee CLI (the docs state the API has no separate
+  language SDK library; the CLI plus `pixee api` passthrough is the supported client).
+  The codemodder Java/Python packages are the open-source codemod authoring frameworks,
+  not clients of the hosted REST API.

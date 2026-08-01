@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  https://docs.pixee.ai/api/overview + https://docs.pixee.ai/api/sarif +
+  pixee CLI bundled skills
+api: Pixee REST API
+assertions:
+- id: sarif
+  conforms: true
+  evidence: >-
+    Pixee consumes SARIF (Static Analysis Results Interchange Format) from scanners as its
+    input format; a dedicated SARIF Reference documents field mapping and validation
+    (https://docs.pixee.ai/api/sarif).
+- id: hal
+  conforms: true
+  evidence: >-
+    The API is a HAL (Hypertext Application Language) API; every response includes `_links`
+    and clients traverse from /api/v1 (per pixee-api CLI skill).
+- id: bearer-auth
+  conforms: true
+  evidence: HTTP bearer token authentication (Authorization header).
+- id: pagination
+  conforms: true
+  evidence: HAL link-based pagination; CLI exposes --paginate.
+- id: oauth2
+  conforms: false
+  evidence: No OAuth2 flows documented; auth is static organization-scoped bearer tokens.
+- id: oidc
+  conforms: false
+  evidence: No OpenID Connect for the API (enterprise dashboard SSO is separate).
+- id: rfc9457
+  conforms: false
+  evidence: Errors use a custom '{error:{code,message,request_id}}' envelope, not application/problem+json.
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset/Deprecation headers documented.

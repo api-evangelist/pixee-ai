@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: derived from documented Pixee REST API operations (https://docs.pixee.ai/api/overview)
+name: Pixee (candidate MCP server)
+notes: >-
+  No official hosted/remote Pixee MCP server was found as of the generated date. Pixee
+  instead ships first-party Agent Skills (skills.sh format, bundled as pixee-cli-skills.tar.gz
+  and captured under skills/ in this repo) that teach coding agents to drive the pixee CLI.
+  The tool list below is a CANDIDATE derived from documented REST operations, not a
+  published server.
+candidate_tools:
+- name: list_repositories
+  operation: GET /repositories
+  description: List repositories connected to the organization.
+- name: get_repository
+  operation: GET /repositories/{id}
+  description: Get repository configuration and status.
+- name: list_repository_fixes
+  operation: GET /repositories/{id}/fixes
+  description: List fix results for a repository.
+- name: get_fix
+  operation: GET /fixes/{id}
+  description: Get fix details including diff and rationale.
+- name: list_repository_scans
+  operation: GET /repositories/{id}/scans
+  description: List scan history for a repository.
+- name: trigger_scan
+  operation: POST /repositories/{id}/scans
+  description: Trigger a new scan.
+- name: list_findings
+  operation: GET /repositories/{id}/findings
+  description: List triaged findings for a repository.
+- name: get_finding
+  operation: GET /findings/{id}
+  description: Get finding details and triage classification.
+- name: register_webhook
+  operation: POST /webhooks
+  description: Register a webhook endpoint.
