@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pixee REST Findings Scans API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scan history for a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pixee.ai/api/v1/repositories/:id/scans",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List scan history for a repository"
+        },
+        {
+          "info": {
+            "name": "Trigger a new scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pixee.ai/api/v1/repositories/:id/scans",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Trigger a new scan"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

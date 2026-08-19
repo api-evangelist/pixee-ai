@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pixee REST Findings Repositories API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List repositories connected to your organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pixee.ai/api/v1/repositories"
+          },
+          "docs": "List repositories connected to your organization"
+        },
+        {
+          "info": {
+            "name": "Get repository configuration and status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pixee.ai/api/v1/repositories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository configuration and status"
+        },
+        {
+          "info": {
+            "name": "Update repository settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.pixee.ai/api/v1/repositories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update repository settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

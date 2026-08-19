@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pixee REST Findings API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Findings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List triaged findings for a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pixee.ai/api/v1/repositories/:id/findings",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List triaged findings for a repository"
+        },
+        {
+          "info": {
+            "name": "Get finding details and triage classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pixee.ai/api/v1/findings/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get finding details and triage classification"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

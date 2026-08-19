@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pixee REST Findings Fixes API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fixes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fix results for a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pixee.ai/api/v1/repositories/:id/fixes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List fix results for a repository"
+        },
+        {
+          "info": {
+            "name": "Get fix details including diff and rationale",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pixee.ai/api/v1/fixes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get fix details including diff and rationale"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

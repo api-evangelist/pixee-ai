@@ -3,12 +3,10 @@ method: derived
 status: candidate
 source: derived from documented Pixee REST API operations (https://docs.pixee.ai/api/overview)
 name: Pixee (candidate MCP server)
-notes: >-
-  No official hosted/remote Pixee MCP server was found as of the generated date. Pixee
-  instead ships first-party Agent Skills (skills.sh format, bundled as pixee-cli-skills.tar.gz
-  and captured under skills/ in this repo) that teach coding agents to drive the pixee CLI.
-  The tool list below is a CANDIDATE derived from documented REST operations, not a
-  published server.
+notes: No official hosted/remote Pixee MCP server was found as of the generated date. Pixee instead ships
+  first-party Agent Skills (skills.sh format, bundled as pixee-cli-skills.tar.gz and captured under skills/
+  in this repo) that teach coding agents to drive the pixee CLI. The tool list below is a CANDIDATE derived
+  from documented REST operations, not a published server.
 candidate_tools:
 - name: list_repositories
   operation: GET /repositories
@@ -37,3 +35,8 @@ candidate_tools:
 - name: register_webhook
   operation: POST /webhooks
   description: Register a webhook endpoint.
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census
