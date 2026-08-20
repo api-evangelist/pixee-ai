@@ -41,6 +41,17 @@ tags:
 - Static Analysis
 - SARIF
 - Code Security
+- Artificial Intelligence
+- Developer Tools
+tags_raw:
+- Company
+- Security
+- Application Security
+- AppSec
+- Vulnerability Remediation
+- Static Analysis
+- SARIF
+- Code Security
 - AI
 - Developer Tools
 apis:
@@ -154,6 +165,8 @@ apis:
   humanURL: https://docs.pixee.ai/api/overview
   baseURL: https://app.pixee.ai/api/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
