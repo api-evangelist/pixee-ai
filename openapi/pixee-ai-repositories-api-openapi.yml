@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Pixee REST Findings Repositories API
   version: v1
@@ -69,12 +69,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Forbidden:
-      description: Token does not have permission for this resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Invalid or missing API token.
       content:
@@ -88,6 +82,12 @@ components:
           schema:
             type: integer
           description: Seconds until the next available request window.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Token does not have permission for this resource.
       content:
         application/json:
           schema:
