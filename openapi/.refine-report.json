@@ -1,11 +1,7 @@
 {
   "provider": "pixee-ai",
   "sources": [
-    "pixee-ai-findings-api-openapi.yml",
-    "pixee-ai-fixes-api-openapi.yml",
-    "pixee-ai-repositories-api-openapi.yml",
-    "pixee-ai-scans-api-openapi.yml",
-    "pixee-ai-webhooks-api-openapi.yml"
+    "_ae-authored/pixee-ai-openapi.yaml"
   ],
   "outputs": [
     "pixee-ai-findings-api-openapi.yml",
@@ -18,12 +14,15 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "pixee-ai-findings-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "pixee-ai-fixes-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "pixee-ai-repositories-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "pixee-ai-scans-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "pixee-ai-webhooks-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "pixee-ai-openapi.yaml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "pixee-ai-findings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pixee-ai-fixes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pixee-ai-repositories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pixee-ai-scans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pixee-ai-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

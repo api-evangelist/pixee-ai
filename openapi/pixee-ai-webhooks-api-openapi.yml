@@ -1,10 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Pixee REST Findings Webhooks API
+  title: Pixee REST Webhooks API
   version: v1
-  description: 'Pixee provides a REST API for programmatic access to vulnerability triage and remediation workflows. The API enables querying fix status, managing repository configurations, listing scans and findings, and registering webhook endpoints for CI/CD integration. Authentication uses organization-scoped bearer API tokens. The API is a HAL (Hypertext Application Language) API: every response includes `_links` that name related resources; clients start at `/api/v1` and follow `_links`.
-
-    This description is a faithful reconstruction of the endpoints documented at https://docs.pixee.ai/api/overview and https://docs.pixee.ai/api/webhooks. It is not the provider''s own machine-readable specification (none was published at a discoverable URL as of the generated date).'
+  description: Pixee provides a REST API for programmatic access to vulnerability triage and remediation workflows.
   contact:
     name: Pixee
     url: https://docs.pixee.ai/api/overview
@@ -62,20 +60,23 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request. Check request body and parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      description: Consistent error envelope used by all error responses.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: not_found
+            message:
+              type: string
+              example: Repository with ID 'abc123' not found.
+            request_id:
+              type: string
+              example: req_7f8a9b2c
     WebhookRegistration:
       type: object
       required:
@@ -101,22 +102,19 @@ components:
         secret:
           type: string
           description: Shared secret used to sign webhook payloads.
-    Error:
-      type: object
-      description: Consistent error envelope used by all error responses.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              example: not_found
-            message:
-              type: string
-              example: Repository with ID 'abc123' not found.
-            request_id:
-              type: string
-              example: req_7f8a9b2c
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request. Check request body and parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

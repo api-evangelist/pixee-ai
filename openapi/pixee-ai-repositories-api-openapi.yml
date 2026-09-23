@@ -1,10 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Pixee REST Findings Repositories API
+  title: Pixee REST Repositories API
   version: v1
-  description: 'Pixee provides a REST API for programmatic access to vulnerability triage and remediation workflows. The API enables querying fix status, managing repository configurations, listing scans and findings, and registering webhook endpoints for CI/CD integration. Authentication uses organization-scoped bearer API tokens. The API is a HAL (Hypertext Application Language) API: every response includes `_links` that name related resources; clients start at `/api/v1` and follow `_links`.
-
-    This description is a faithful reconstruction of the endpoints documented at https://docs.pixee.ai/api/overview and https://docs.pixee.ai/api/webhooks. It is not the provider''s own machine-readable specification (none was published at a discoverable URL as of the generated date).'
+  description: Pixee provides a REST API for programmatic access to vulnerability triage and remediation workflows.
   contact:
     name: Pixee
     url: https://docs.pixee.ai/api/overview
@@ -69,8 +67,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Unauthorized:
-      description: Invalid or missing API token.
+    Forbidden:
+      description: Token does not have permission for this resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:
@@ -86,14 +90,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Token does not have permission for this resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Invalid or missing API token.
       content:
         application/json:
           schema:
