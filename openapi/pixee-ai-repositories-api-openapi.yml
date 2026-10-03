@@ -78,6 +78,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Forbidden:
       description: Token does not have permission for this resource.
       content:
@@ -86,12 +92,6 @@ components:
             $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Invalid or missing API token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
       content:
         application/json:
           schema:
