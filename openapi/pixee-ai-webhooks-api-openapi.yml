@@ -61,22 +61,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Error:
-      type: object
-      description: Consistent error envelope used by all error responses.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              example: not_found
-            message:
-              type: string
-              example: Repository with ID 'abc123' not found.
-            request_id:
-              type: string
-              example: req_7f8a9b2c
     WebhookRegistration:
       type: object
       required:
@@ -102,15 +86,31 @@ components:
         secret:
           type: string
           description: Shared secret used to sign webhook payloads.
+    Error:
+      type: object
+      description: Consistent error envelope used by all error responses.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: not_found
+            message:
+              type: string
+              example: Repository with ID 'abc123' not found.
+            request_id:
+              type: string
+              example: req_7f8a9b2c
   responses:
-    NotFound:
-      description: Resource not found.
+    BadRequest:
+      description: Bad request. Check request body and parameters.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request. Check request body and parameters.
+    NotFound:
+      description: Resource not found.
       content:
         application/json:
           schema:

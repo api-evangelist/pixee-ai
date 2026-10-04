@@ -67,19 +67,8 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    RateLimited:
-      description: Rate limit exceeded. Retry after the interval in the Retry-After header.
-      headers:
-        Retry-After:
-          schema:
-            type: integer
-          description: Seconds until the next available request window.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Invalid or missing API token.
       content:
         application/json:
           schema:
@@ -90,8 +79,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing API token.
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Rate limit exceeded. Retry after the interval in the Retry-After header.
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+          description: Seconds until the next available request window.
       content:
         application/json:
           schema:
