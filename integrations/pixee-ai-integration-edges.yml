@@ -2,20 +2,26 @@ generated: '2026-10-14'
 method: searched
 checked:
 - https://api.nuget.org/v3
-- https://cdn.winget.microsoft.com/cache
 - https://cloudsecurityalliance.org/star/registry
 - https://crates.io/api/v1
 - https://eucoc.cloud/en/public-register/list-of-adherent-services
-- https://formulae.brew.sh/api/cask.json
-- https://formulae.brew.sh/api/formula.json
-- https://github.com/ScoopInstaller/Extras
-- https://github.com/ScoopInstaller/Main
 - https://github.com/marketplace?type=actions
 - https://proxy.golang.org
 - https://pypi.org/pypi
 - https://registry.npmjs.org
 - https://repo1.maven.org/maven2
 - https://rubygems.org/api/v1
+- https://cdn.winget.microsoft.com/cache
+- https://formulae.brew.sh/api/cask.json
+- https://formulae.brew.sh/api/formula.json
+- https://github.com/ScoopInstaller/Extras
+- https://github.com/ScoopInstaller/Main
+- https://api.github.com
+- https://claude-plugins.dev/sitemap.xml
+- https://github.com/VoltAgent/awesome-agent-skills
+- https://officialskills.sh/sitemap.xml
+- https://skillsmp.com/sitemap.xml
+- https://www.skills.sh/sitemap.xml
 marketplace_apps: []
 edges:
 - partner_name: GitHub Marketplace (actions)
@@ -128,6 +134,38 @@ edges:
     detected_by: sweep-official-clis.py
     detected: '2026-10-20'
   detected_by: sweep-official-clis.py
+  first_seen: '2026-10-20'
+- partner_name: Agent Skills (own GitHub org)
+  partner: null
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: Agent Skills package
+  evidence: https://github.com/pixee/pixee-cli
+  channel: provider-built
+  relationship: compatible
+  shape: agent-skills
+  evidence_kind: own-repo
+  degree: skill-repo
+  report_only: true
+  agent_skills:
+    org: pixee
+    current: true
+    repos:
+    - repo: pixee/pixee-cli
+      archived: false
+      lapsed: false
+      pushed: '2026-10-16'
+  contract_reference:
+    register: 'provider''s own GitHub org (GitHub REST API: repo + git tree holds SKILL.md)'
+    spec_file: null
+    standard: Agent Skills (agentskills.io)
+    role: agent-skills-repo
+    matched_org: pixee
+    matched_by: org-profile-domain:pixee.ai
+    detected_by: sweep-agent-skills.py
+    detected: '2026-10-20'
+  detected_by: sweep-agent-skills.py
   first_seen: '2026-10-20'
 source:
 - https://github.com/marketplace?type=actions
